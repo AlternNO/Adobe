@@ -1,0 +1,26 @@
+#target bridge   
+if( BridgeTalk.appName == "bridge" ) {  
+    labelRate = MenuElement.create("command", "Copy label & rate from JPGs to NEF", "at the end of Tools","labelRate");
+}
+
+labelRate.onSelect = function () { 
+    app.document.selectAll();
+    var thumbs = app.document.selections;
+    for(var a in thumbs) { //look thru all files
+        var selectedFile = thumbs[a].spec;
+        var FileName = decodeURI(selectedFile.name); // get file name 
+        var etternavn = FileName.slice((FileName.lastIndexOf(".") - 1 >>> 0) + 2); //get file extension
+        var gradering = thumbs[a].rating;
+        if(etternavn=="JPG" && gradering>0){ //remember to rate those that has a lavel
+            var etikettJPG = thumbs[a].label;
+            var graderingJPG = thumbs[a].rating;
+            var RawNavnet = FileName.replace("JPG","NEF");
+            }
+        //Assuming all images are sortet by name and the jpg is before the nef, the next thumb will be the raw-version of the jpg we just treated
+        if(etternavn=="NEF" && FileName==RawNavnet){
+            thumbs[a].rating=graderingJPG;  
+            thumbs[a].label=etikettJPG;  
+        }
+    }
+alert("Done");
+} 
