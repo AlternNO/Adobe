@@ -1,4 +1,5 @@
 #target bridge   
+// Modifyed code: https://community.adobe.com/t5/bridge-discussions/intelligent-complementary-file-selection-jpg-maching-raw-file/td-p/4770274
 if( BridgeTalk.appName == "bridge" ) {  
     labelRate = MenuElement.create("command", "Copy label & rate from JPGs to NEF", "at the end of Tools","labelRate");
 }
