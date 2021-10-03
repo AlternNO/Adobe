@@ -11,7 +11,7 @@ labelRate.onSelect = function () {
         var FileName = decodeURI(selectedFile.name); // get file name 
         var etternavn = FileName.slice((FileName.lastIndexOf(".") - 1 >>> 0) + 2); //get file extension
         var gradering = thumbs[a].rating;
-        if(etternavn=="JPG" && gradering>0){ //remember to rate those that has a lavel
+        if(etternavn=="JPG" && gradering>0){ //remember to rate those that has a label
             var etikettJPG = thumbs[a].label;
             var graderingJPG = thumbs[a].rating;
             var RawNavnet = FileName.replace("JPG","NEF");
